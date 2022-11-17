@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Text To HTML Converter</title>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    </head>
+    <body>
+        <style>
+            body{
+                background-color: whitesmoke;
+            }
+        </style>
+        <nav class="navbar navbar-dark bg-dark" style="padding: 0 20p;">
+            <ul class="nav">
+                <li class="navbar-item"><a href="#" class="navbar-brand bigbrand">Parser</a></li>
+                <li class="navbar-item"><a href="{% url 'texttohtml:index' %}" class="nav-link ">Home</a></li>
+                <li><a href="{% url 'texttohtml:converter' %}" class="nav-link">Converter</a></li>
+            </ul>
+            <ul class="nav nav-right">
+                <li><a href="https://github.com/RitikSibjr/Python-Django" class="nav-link">Github</a></li>
+            </ul>
+        </nav>
+
+        {% block content %}
+
+        {% endblock %}
+    </body>
+</html>

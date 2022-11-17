@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+     #cke_id_body {
+        width: inherit !important;
+    }
+
+    .htmleditor p {
+        font-weight: 900;
+        font-size: 20px;
+    }
+    .texteditor p label {
+        font-weight: 800;
+        font-size: 18px;
+    }
+    #htmldata {
+        font-weight: 600;
+    }
+
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div class="texteditor">
+                {{ form.media }}
+                {{ form.as_p }}
+            </div>
+            <input type="button" value="Convert" class="btn btn-dark" onclick="TextConvert()">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div class="htmleditor">
+                <p>HTML Editor:</p>
+                <div class="form-group">
+                    <textarea class="form-control " rows="16" id='htmldata'>
+                </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function TextConvert() {
+        var x = CKEDITOR.instances['id_body'].getData();
+        var y = document.getElementById('htmldata');
+        y.innerHTML = x;
+    }
+</script>
+{% endblock %}
