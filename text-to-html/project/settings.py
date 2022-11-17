@@ -26,6 +26,7 @@ env.read_env()
 
 SECRET_KEY = 'MY_SECRET_KEY'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
