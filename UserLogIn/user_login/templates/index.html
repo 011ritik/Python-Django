@@ -3,7 +3,15 @@
 {% block content %}
 
     <div class="container">
-        This is index page.
+        <h4>Hello, {{user.username | default:"Guest"}}</h4>
+
+        {% if user.is_authenticated %}
+           
+            <a href="{% url 'logout' %}"><button class="btn btn-danger">Log Out</button></a>
+        {% else %}
+            <a href="{% url 'login' %}"><button class="btn btn-dark">Log In</button></a>
+        {% endif %}
+
     </div>
 
 {% endblock %}

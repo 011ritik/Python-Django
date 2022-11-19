@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>User Details:</h1>
+        <pre>
+            <h6>Username :</h6>{{ user.username }}
+            <h6>Email :</h6>{{ user.email }}
+        </pre>
+        <a href="{% url 'password_change' %}"><button class="btn btn-danger">Change Password</button></a>
+        <button class="btn btn-dark"><a href="{% url 'index' %}" class="nav-link">Back To Home</a></button>
+    </div>
+{% endblock %}

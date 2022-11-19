@@ -10,7 +10,9 @@
     <body>
         <nav class="navbar navbar-dark bg-dark">
             <ul class="nav navbar-nav">
-                <li class="navbar-brand"><a href="#">Brand</a></li>
+                <li><a href="#"  class="navbar-brand">Brand</a></li>
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'user' %}" class="nav-link">User</a></li>
             </ul>
         </nav>
         {% block content %}
