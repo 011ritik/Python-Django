@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if question_list %}
+    <h1 class="center">The most recents posts :</h1><br>
+    {% for question in question_list %}
+        <ul>
+            <li class="center"><h3><a href="{% url 'polls:detail' question.pk %}" class="nav-link">{{ question.question }}</a></h3></li><br>
+        </ul>
+    {% endfor %}
+    {% else %}
+        <h3>There is no questions available.</h3>
+    {% endif %}
+</div>
+{% endblock %}

@@ -3,4 +3,4 @@ from .models import Question, Choices
 
 # Register your models here.
 admin.site.register(Question)
-admin.site.registe(Choices)
+admin.site.register(Choices)
