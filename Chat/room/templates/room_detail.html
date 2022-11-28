@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{room.name}}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="head">{{room.name}}</h1>
+
+    <div class="container fixed-card card">
+        <div class="container mini-card card">
+            <b>{{room.name}}</b>
+            <p>This is the message.</p>
+        </div>
+        <div class="container mini-card card">
+            <b>{{room.name}}</b>
+            <p>This is the message.</p>
+        </div>
+    </div>
+
+    <div class="container card fixed-card" style="height: 15vh;">
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" class="msg" id="id_messgae_send_input">
+            <input type="submit" style="margin-top: 1vh;" value="submit" class="btn btn-dark in" id="id_message_send">
+        </form>
+    </div>
+</div>
+{% endblock %}

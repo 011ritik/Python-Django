@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Rooms{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="head">Rooms</h1>
+    {% for room in rooms %}
+       <div class="container card">
+            <h3>{{room.name}}</h3>
+            <button type="submit" class="btn btn-dark in new-btn"><a href="{% url 'roomdetail' room.slug %}">Join</a></button>
+       </div>
+       <br>
+    {% endfor %}
+    <a href="" style="position: sticky;"><input type="submit" value="Create Room" class="btn btn-dark in"></a>
+</div>
+  
+{% endblock %}

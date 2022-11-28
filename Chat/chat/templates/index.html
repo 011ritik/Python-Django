@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    
+    <div class="container">
+        {% if user.is_authenticated %}
+            <div class="container fixed-card card">
+                <h1>User is authenticated</h1>
+                <p>This is a chat system app. Build in <strong>Python-Django</strong>.<br>
+                
+                <ul style="text-align: left;">
+                    Featues:
+                    <li>You can Sign up to chat.</li>
+                    <li>You can log in and log out from the app.</li>
+                    <li>You can send messages and read messages.</li>
+                </ul></p>
+            </div>
+        {% else %}
+        <div class="container fixed-card card">
+            <h1>User is not authenticated</h1>
+            <p>Make sure or <strong>logged in</strong> else you can <strong>sign up</strong>.</p>
+            <a href="{% url 'login' %}" style="text-decoration: underline;">Follow this link to login or check the top right corner.</a>
+            <a href="{% url 'register' %}" style="text-decoration: underline;">Follow this link to sign up or check the top right corner.</a>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
