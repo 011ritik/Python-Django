@@ -3,26 +3,53 @@
 {% block title %}{{room.name}}{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="head">{{room.name}}</h1>
-
-    <div class="container fixed-card card">
-        <div class="container mini-card card">
-            <b>{{room.name}}</b>
-            <p>This is the message.</p>
-        </div>
-        <div class="container mini-card card">
-            <b>{{room.name}}</b>
-            <p>This is the message.</p>
+<body>
+    <div class="container">
+        <h1 class="head" id="room-name">{{room.name}}</h1>
+    
+        <div class="container  card" style="width: 80%;">
+            <textarea id="chat-log" cols="300" rows="8" style="background-color: whitesmoke;"></textarea><br>
+            <div style="display: flex; justify-content: space-between;">
+                <input type="text" id="chat-message-input" size="200" style="width: 70%;">
+                <input type="button" id="chat-message-submit" value="Send" class="btn btn-dark in" style="width: 27%;">
+            </div>
         </div>
     </div>
+    <script>
+        const roomName = (document.getElementById('room-name').textContent).toLowerCase();
+        document.write(roomName);
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/rooms/'
+            + roomName
+            + '/'
+        );
+        
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#chat-log').value += (data.message + '\n');
+        };
 
-    <div class="container card fixed-card" style="height: 15vh;">
-        <form method="post">
-            {% csrf_token %}
-            <input type="text" class="msg" id="id_messgae_send_input">
-            <input type="submit" style="margin-top: 1vh;" value="submit" class="btn btn-dark in" id="id_message_send">
-        </form>
-    </div>
-</div>
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+
+        document.querySelector('#chat-message-submit').onclick = function(e) {
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        };
+    </script>
+</body>
 {% endblock %}
