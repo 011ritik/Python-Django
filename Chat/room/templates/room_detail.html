@@ -6,20 +6,23 @@
 <body>
     <div class="container">
         <h1 class="head" id="room-name">{{room.name}}</h1>
-        <h4 id="user-name" style="font-size: 2px; margin: 0;">{{user.username}}</h4>
+        <h4 id="user-name" style="font-size: 2px; margin: 0;">{{request.user.username|json_script:"json-username"}}</h4>
     
         <div class="container  card" style="width: 80%;">
             <div class="container fixed-card card" id="chat-log" style="background-color: whitesmoke;">
                 <!-- message box -->
             </div>
             <div style="display: flex; justify-content: space-between;">
-                <input type="text" id="chat-message-input" size="200" style="width: 70%;">
+                <input type="text" id="chat-message-input" size="200" style="width: 70%; border-radius: 30px;">
                 <input type="button" id="chat-message-submit" value="Send" class="btn btn-dark in" style="width: 27%;">
             </div>
         </div>
     </div>
+    {% block script %}
+    {{request.user.username|json_script:"json-username"}}
     <script>
         const roomName = (document.getElementById('room-name').textContent).toLowerCase();
+        const username = JSON.parse(document.getElementById('json-username').textContent);
         const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
@@ -50,16 +53,17 @@
             }
         };
 
+
         document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
-            const userName = (document.getElementById('user-name').textContent);
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
+                'username': username,
                 'message': message,
-                'username': userName,
             }));
             messageInputDom.value = '';
         };
     </script>
+    {% endblock %}
 </body>
 {% endblock %}
