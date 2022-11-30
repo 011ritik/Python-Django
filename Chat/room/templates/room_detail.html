@@ -6,9 +6,12 @@
 <body>
     <div class="container">
         <h1 class="head" id="room-name">{{room.name}}</h1>
+        <h4 id="user-name" style="font-size: 2px; margin: 0;">{{user.username}}</h4>
     
         <div class="container  card" style="width: 80%;">
-            <textarea id="chat-log" cols="300" rows="8" style="background-color: whitesmoke;"></textarea><br>
+            <div class="container fixed-card card" id="chat-log" style="background-color: whitesmoke;">
+                <!-- message box -->
+            </div>
             <div style="display: flex; justify-content: space-between;">
                 <input type="text" id="chat-message-input" size="200" style="width: 70%;">
                 <input type="button" id="chat-message-submit" value="Send" class="btn btn-dark in" style="width: 27%;">
@@ -17,7 +20,6 @@
     </div>
     <script>
         const roomName = (document.getElementById('room-name').textContent).toLowerCase();
-        document.write(roomName);
         const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
@@ -28,7 +30,13 @@
         
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            
+            let html =  '<div class="container mini-card card">'
+            html += '<b>' + data.username +'</b>'
+            html += '<p>' + data.message + '</p>'
+            html += '</div>'
+
+            document.querySelector('#chat-log').innerHTML += html
         };
 
         chatSocket.onclose = function(e) {
@@ -44,9 +52,11 @@
 
         document.querySelector('#chat-message-submit').onclick = function(e) {
             const messageInputDom = document.querySelector('#chat-message-input');
+            const userName = (document.getElementById('user-name').textContent);
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': message,
+                'username': userName,
             }));
             messageInputDom.value = '';
         };
