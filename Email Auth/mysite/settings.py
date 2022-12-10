@@ -26,6 +26,13 @@ env = Env()
 env.read_env()
 SECRET_KEY = 'MY_SECRET_KEY'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'stmp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'MY_EMAIL'
+EMAIL_HOST_PASSWORD = 'MY_PASS'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -130,12 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'stmp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'myemail.gmail.com'
-EMAIL_HOST_PASSWORD = 'mypassword'
+
 
 import socket
 socket.getaddrinfo('localhost', 8080)
