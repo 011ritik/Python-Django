@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Index</h1>
+    {% if user.is_authenticated %}
+    <h1>logged in</h1>
+    {% else %}
+    <h1>Logged out</h1>
+    {% endif %}
+    <a href="{% url 'login' %}"><button>Login</button></a>
+    <a href="{% url 'logout' %}"><button>LogOut</button></a>
+    <a href="{% url 'signup' %}"><button>signin</button></a>
+
+
+
+
+{% endblock %} 
