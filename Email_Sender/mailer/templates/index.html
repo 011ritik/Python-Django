@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load widget_tweaks%}
+</head>
+<style>
+    .container{
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Email Sender</h1>
+        {% if mailSend %}
+            <h3>Mail has been send!</h3>
+        {% else %}
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <p>{% render_field field placeholder=field.label class+="msgbox" %}</p>
+                {% endfor %}
+                <input type="submit" value="Send">
+            </form>
+
+        {% endif %}
+    </div>
+</body>
+</html>
