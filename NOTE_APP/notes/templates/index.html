@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    
+    <div>
+        <h1>Notes:</h1>
+        {% for note in object_list %}
+            <div class="notes notes-list">
+                <a href="{% url 'note_detail' pk=note.id %}">
+                    <h2>{{note}}</h2>
+                    <p class="para">{{note.description}}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    
+   
+{% endblock %}

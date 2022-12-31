@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <title>Notes</title>
+</head>
+<style>
+    *{
+        background-color: black;
+        color: white;
+        text-decoration: none;
+    }
+    
+    .head{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 25px;  
+    }
+
+    .notes{
+        padding: 1em 4em;
+        margin: 2em 5em;
+        border: 1px solid white;
+    }
+
+    .notes-list{
+        width: 50%;
+        margin: 2em auto;
+    }
+    .para{
+        text-align: left;
+    }
+    
+    h2{
+        text-decoration: underline;
+    }
+
+    .add-btn{
+        color: white;
+        font-size: 25px;
+    }
+
+
+    .btn{
+        border-radius: 30px;
+        background-color: white;
+        color: black;
+        padding: 10px;
+        width: 6em;
+    }
+
+    .btn-delete{
+        background-color: red;
+    }
+    
+    
+</style>
+<body>
+    <nav>
+        <div class="head">
+            <a href="{% url 'index' %}"><h1>My <strong>Note</strong></h1></a>
+            <a href="{% url 'add_note' %}">
+                <ion-icon name="add" class="add-btn"></ion-icon>
+            </a>
+        </div>
+    </nav>
+    <hr>
+    <div class="container" style="text-align: center;">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="notes">
+        <h1>{{object.title}}</h1>
+        <p class="para">{{object.description}}</p>
+
+        <div class="edit">
+            <a href="{% url 'delete' pk=object.id%}"><button class="btn btn-delete">Delete</button></a>
+            <button class="btn">Edit</button>
+        </div>
+    </div>
+    
+
+{% endblock %}
