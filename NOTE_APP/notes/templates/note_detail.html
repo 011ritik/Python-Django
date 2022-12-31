@@ -3,13 +3,17 @@
 
 {% block content %}
 
-    <div class="notes">
+    <div class="nots">
         <h1>{{object.title}}</h1>
-        <p class="para">{{object.description}}</p>
+        <p class="par">{{object.description}}</p>
 
         <div class="edit">
-            <a href="{% url 'delete' pk=object.id%}"><button class="btn btn-delete">Delete</button></a>
-            <button class="btn">Edit</button>
+            <a href="{% url 'delete' pk=object.id%}">
+                <button class="btn btn-delete">Delete</button>
+            </a>
+            <a href="{% url 'update' pk=object.id %}">
+                <button class="btn">Edit</button>
+            </a>
         </div>
     </div>
     

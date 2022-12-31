@@ -8,9 +8,12 @@
     <title>Notes</title>
 </head>
 <style>
-    *{
+    body{
         background-color: black;
         color: white;
+    }
+
+    *{
         text-decoration: none;
     }
     
@@ -19,20 +22,46 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 25px;  
+        margin: 0;
+        background-color: #2E2E2E;
+        border-radius: 10px;
+    }
+
+    a{
+        color: white;
     }
 
     .notes{
-        padding: 1em 4em;
-        margin: 2em 5em;
-        border: 1px solid white;
+        padding: 0 4em;
+        padding-bottom: 10px;
+        margin: 0 5em;
+        border-top: 7px solid lightskyblue;
+        background-color: #2E2E2E;
     }
 
     .notes-list{
         width: 50%;
-        margin: 2em auto;
+        margin: 0 auto;
+        margin-bottom: 2em;
     }
-    .para{
-        text-align: left;
+
+    .title{
+        color: whitesmoke ;
+    }
+
+    .para, .title{
+        text-align: center;
+        background-color: #2E2E2E;
+    }
+
+    .list-para{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .par{
+        padding: 0 4em;
     }
     
     h2{
@@ -62,13 +91,12 @@
 <body>
     <nav>
         <div class="head">
-            <a href="{% url 'index' %}"><h1>My <strong>Note</strong></h1></a>
+            <a href="{% url 'index' %}"><h1>My Note</h1></a>
             <a href="{% url 'add_note' %}">
                 <ion-icon name="add" class="add-btn"></ion-icon>
             </a>
         </div>
     </nav>
-    <hr>
     <div class="container" style="text-align: center;">
         {% block content %}
 
