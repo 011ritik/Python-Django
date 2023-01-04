@@ -3,10 +3,12 @@
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        {% for field in form %}
-        <p>{{field}}</p>
-        {% endfor %}
-        <input type="submit" value="Done" class="btn">
+        {% load widget_tweaks %}
+        
+        {% render_field form.title placeholder='Title' class+='form-field'%}
+        {% render_field form.description placeholder='Description' class+='form-field msg'%}
+
+        <br><input type="submit" value="Done" class="btn">
     </form>
 
 {% endblock %}

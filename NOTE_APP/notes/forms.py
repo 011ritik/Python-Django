@@ -6,5 +6,5 @@ class NoteFormView(forms.ModelForm):
         model = Notes
         fields = ['title', 'description']
         widgets = {
-            'description': forms.Textarea(attrs={'cols':80, 'rows':20})
+            'description': forms.Textarea()
         }

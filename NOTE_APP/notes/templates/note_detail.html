@@ -3,9 +3,9 @@
 
 {% block content %}
 
-    <div class="nots">
+    <div class="note-detail">
         <h1>{{object.title}}</h1>
-        <p class="par">{{object.description}}</p>
+        <p class="para-detail">{{object.description}}</p>
 
         <div class="edit">
             <a href="{% url 'delete' pk=object.id%}">
