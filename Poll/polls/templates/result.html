@@ -13,6 +13,7 @@
         {% endfor %}
     </fieldset>
     <a href="{% url 'polls:detail' question.pk %}" class="btn btn-dark">Vote Again</a>
+    <a href="{% url 'polls:detail' question.pk%}" class="btn btn-dark">Back</a>
 </div>
 
 {% endblock %}

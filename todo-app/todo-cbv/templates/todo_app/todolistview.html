@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for todo in todomodel_list %}
+<h3><span>{{todo.id}}. </span>{{todo.title}}</h3>
+<p>{{todo.created_date}}</p>
+{% endfor %}
+
+{% endblock %}

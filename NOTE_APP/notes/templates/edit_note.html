@@ -7,7 +7,15 @@
         {% load widget_tweaks %}
         {% render_field form.title placeholder='Title' class+='form-field'%}
         {% render_field form.description placeholder='Description' class+='form-field msg'%}
-        <br><input type="submit" value="Done" class="btn">
+        <br>
+        <div class="edit">
+            <a href="{% url 'delete' pk=object.id%}">
+                <button class="btn btn-delete">Delete</button>
+            </a>
+            <a href="{% url 'update' pk=object.id %}">
+                <button class="btn">Edit</button>
+            </a>
+        </div>
     </form>
 
 {% endblock %}

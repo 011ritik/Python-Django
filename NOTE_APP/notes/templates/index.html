@@ -6,7 +6,7 @@
     <div>
         {% for note in object_list %}
             <div class="notes notes-list">
-                <a href="{% url 'note_detail' pk=note.id %}">
+                <a href="{% url 'update' pk=note.id %}">
                     <h3 class="title">{{note}}</h3>
                     <p class="para list-para">{{note.description}}</p>
                 </a>

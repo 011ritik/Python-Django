@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+    <div class="task-list">
+        {% for task in tasks_list %}
+
+            {% if task.completed == True %}
+
+                <h3><strike>{{task.title}}</strike></h3>
+                <a href="{% url 'update' task.pk %}" class="btn btn-dark">Update</a>
+                <a href="{% url 'delete' task.pk %}" class="btn btn-danger">Delete</a>
+
+            {% else %}
+                <h3>{{task.title}}</h3>
+                <a href="{% url 'update' task.pk %}" class="btn btn-dark">Update</a>
+                <a href="{% url 'delete' task.pk %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+            
+        {% endfor %}
+    </div>
+    
+
+{% endblock %}

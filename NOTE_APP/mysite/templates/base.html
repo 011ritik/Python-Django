@@ -109,6 +109,8 @@
     .msg{
         height: 60vh;
         max-width: 50%;
+        line-height: 2;
+        letter-spacing: 2;
     }
     
     
@@ -118,7 +120,7 @@
         <div class="head">
             <a href="{% url 'index' %}"><h1>My Note</h1></a>
             <a href="{% url 'add_note' %}">
-                <ion-icon name="add" class="add-btn"></ion-icon>
+                <ion-icon name="add" class="add-btn" alt="add"></ion-icon>
             </a>
         </div>
     </nav>
