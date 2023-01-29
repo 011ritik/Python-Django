@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="task-list">
+
+    <form action="" method="POST">
+        {% csrf_token %} 
+        {{form.as_p}}
+        <input type="submit" value="Update" class="btn btn-dark">
+    </form>
+
+</div>
+
+{% endblock %}
